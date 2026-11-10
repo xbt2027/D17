@@ -1,0 +1,98 @@
+import { existsSync, readFileSync } from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import { createRequire } from "node:module";
+import hardhatVerify from "@nomicfoundation/hardhat-verify";
+import { configVariable, defineConfig } from "hardhat/config";
+
+const configDir = path.dirname(fileURLToPath(import.meta.url));
+const require = createRequire(import.meta.url);
+
+for (const envPath of [path.join(configDir, ".env")]) {
+  if (!existsSync(envPath)) continue;
+  for (const line of readFileSync(envPath, "utf8").split(/\r?\n/)) {
+    const trimmed = line.trim();
+    if (!trimmed || trimmed.startsWith("#")) continue;
+    const index = trimmed.indexOf("=");
+    if (index === -1) continue;
+    const key = trimmed.slice(0, index).trim();
+    const value = trimmed.slice(index + 1).trim().replace(/^['"]|['"]$/g, "");
+    if (!(key in process.env)) process.env[key] = value;
+  }
+}
+
+export default defineConfig({
+  plugins: [hardhatVerify],
+  solidity: {
+    version: "0.8.38",
+    // Lock the compiler bytes with npm; builds need no global compiler cache/download.
+    path: require.resolve("solc/soljson.js"),
+    settings: {
+      evmVersion: "shanghai",
+      viaIR: true,
+      optimizer: {
+        enabled: true,
+        runs: 1
+      },
+      metadata: {
+        bytecodeHash: "none"
+      }
+    }
+  },
+  networks: {
+    gasBudget: {
+      type: "edr-simulated",
+      chainType: "l1",
+      blockGasLimit: 40_000_000,
+      transactionGasCap: 16_777_216
+    },
+    hardhat: {
+      type: "edr-simulated",
+      chainType: "l1",
+      blockGasLimit: 40_000_000,
+      transactionGasCap: false
+    },
+    // Local simulation with chain id 1, used only by test/mainnet-floors-e2e.mjs to exercise
+    // the mainnet-only launch minimums (24 h notice, 1 h windows). Not a real network.
+    mainnetSim: {
+      type: "edr-simulated",
+      chainType: "l1",
+      chainId: 1,
+      blockGasLimit: 40_000_000,
+      transactionGasCap: false
+    },
+    // Chain for `npm run demo:local` (chain id 31337). Blocks may share a timestamp so a
+    // burst of deployment transactions does not push the chain clock ahead of the wall
+    // clock the web app counts down with.
+    localDemo: {
+      type: "edr-simulated",
+      chainType: "l1",
+      allowBlocksWithSameTimestamp: true,
+      // A block every second, like a live network: the contracts' phase follows
+      // block.timestamp, so an idle chain would otherwise freeze the launch's clock.
+      mining: { auto: true, interval: 1000 },
+      blockGasLimit: 40_000_000,
+      transactionGasCap: false
+    },
+    sepolia: {
+      type: "http",
+      chainType: "l1",
+      url: configVariable("SEPOLIA_RPC_URL")
+    },
+    mainnet: {
+      type: "http",
+      chainType: "l1",
+      url: configVariable("MAINNET_RPC_URL")
+    }
+  },
+  verify: {
+    etherscan: {
+      apiKey: configVariable("ETHERSCAN_API_KEY")
+    }
+  },
+  paths: {
+    sources: "./contracts",
+    artifacts: "./artifacts",
+    cache: "./cache"
+  }
+});

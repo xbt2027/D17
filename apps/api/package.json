@@ -1,0 +1,26 @@
+{
+  "name": "@d17/api",
+  "version": "1.0.0",
+  "private": false,
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": "^22.22.2 || ^24.15.0 || >=26.0.0",
+    "npm": "12.2.1"
+  },
+  "scripts": {
+    "dev": "node src/server.mjs",
+    "start": "node src/server.mjs",
+    "start:sepolia": "node scripts/run-profile.mjs sepolia",
+    "start:mainnet": "node scripts/run-profile.mjs mainnet",
+    "start:all": "node scripts/run-all.mjs",
+    "once": "INDEX_ONCE=1 node src/server.mjs",
+    "check": "node src/check-state.mjs",
+    "verify:launch": "node scripts/verify-launch-api.mjs",
+    "test": "node scripts/smoke.mjs && node scripts/smoke-profiles.mjs"
+  },
+  "dependencies": {
+    "ethers": "^6.16.0",
+    "ws": "^8.18.3"
+  }
+}

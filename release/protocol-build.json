@@ -1,0 +1,1042 @@
+{
+  "schema": "d17-protocol-build-v1",
+  "release": "1.1.0-v15",
+  "compiler": {
+    "version": "0.8.24",
+    "longVersion": "0.8.24+commit.e11b9ed9",
+    "settings": {
+      "evmVersion": "shanghai",
+      "viaIR": true,
+      "optimizer": {
+        "enabled": true,
+        "runs": 1
+      },
+      "metadata": {
+        "bytecodeHash": "none"
+      }
+    },
+    "referenceArtifacts": [
+      {
+        "filename": "solc-macosx-amd64-v0.8.24+commit.e11b9ed9",
+        "sha256": "cc2d44c706905ccc382f484625dff61d741e0c24232d226f139a6835fc644f3f"
+      },
+      {
+        "filename": "soljson-v0.8.24+commit.e11b9ed9.js",
+        "sha256": "11b054b55273ec55f6ab3f445eb0eb2c83a23fed43d10079d34ac3eabe6ed8b1"
+      }
+    ]
+  },
+  "standardJsonInput": "solc-input.json",
+  "standardJsonInputSha256": "89c3491cc48a24f9585dae33726a2cdc28aacbded7a7f0b34b4b5ca4d4557d53",
+  "identities": {
+    "factory": {
+      "literal": "D17_FACTORY_V15_HARDENED",
+      "keccak256": "0xf21ce510ea9bd416f323134f017bd3b71971582a0901bc81385c9476e35d44fc"
+    },
+    "feeConfig": {
+      "literal": "D17_FEE_CONFIG_V15_HARDENED",
+      "keccak256": "0xf3da00d4bb7f0ec1cb05a810c49ac2d82c3f5f95ce81d6007dd45bd0774df9be"
+    },
+    "tokenFactory": {
+      "literal": "D17_TOKEN_FACTORY_V15_HARDENED",
+      "keccak256": "0xa9714037f618cb30a59877ea41ff10ec75230ee2df60b6680d9370b021050779"
+    },
+    "liquidityVaultFactory": {
+      "literal": "D17_LIQUIDITY_VAULT_FACTORY_V15_HARDENED",
+      "keccak256": "0x3f7f105818e660e24817479f241620339b047cb5abe1505dab359b10a8beb310"
+    },
+    "launchDeployer": {
+      "literal": "D17_LAUNCH_DEPLOYER_V15_HARDENED",
+      "keccak256": "0x31dae67542e422dbee674b2fe804a369b4b6f1f657b8270e290b4ae073822ee0"
+    },
+    "launch": {
+      "literal": "D17_LAUNCH_V15_HARDENED",
+      "keccak256": "0xfe7275ce4daad65171e25fda19d73da9e9d908ff0874c9219d9134fd631f8d82"
+    },
+    "liquidityVault": {
+      "literal": "D17_LIQUIDITY_VAULT_V15_HARDENED",
+      "keccak256": "0x9c91b3d129a14a5685743e0d140ceca45871dbbbc6b7f7b8e5fb564e3dad6a2a"
+    },
+    "token": {
+      "literal": "D17_TOKEN_V15_HARDENED",
+      "keccak256": "0xc27ead2b161df860ae2b6245d3ef0ddf354280b6c7a5f16d42644f88d468348c"
+    }
+  },
+  "sources": {
+    "contracts/contracts/D17Factory.sol": {
+      "sha256": "8625982db31570d3236897639de857226ef9304a85ed7fda333fcb12b776cb4d"
+    },
+    "contracts/contracts/D17FeeConfig.sol": {
+      "sha256": "b9b11c6480d3a67e86e03a3bdec047c8b7f6ae6e26a60914f262573c2a796623"
+    },
+    "contracts/contracts/D17FeeSplitter.sol": {
+      "sha256": "051c2e0e8ec87efb4c53c17c7896606b532884f94d63a1002bce5464f7597549"
+    },
+    "contracts/contracts/D17LaunchDeployer.sol": {
+      "sha256": "a97ce96944182518514e880027ff981af7b1ea63b24832196927a7ee3df7fd01"
+    },
+    "contracts/contracts/D17Launch.sol": {
+      "sha256": "415764d7330feaec774c38c03ef9694daeb3559b1c2b8b42bfc9bf7d5f58cf9b"
+    },
+    "contracts/contracts/D17LaunchFactory.sol": {
+      "sha256": "b4bccce5836d3abe34805c7145b2572fb6f40fec604d6e55617fe9ba132af98f"
+    },
+    "contracts/contracts/D17LiquidityVault.sol": {
+      "sha256": "ab71b2c98bf35ad4c48d167576249c747b30a3aaef2435ba756242ca2d3f34ca"
+    },
+    "contracts/contracts/D17LiquidityVaultFactory.sol": {
+      "sha256": "d93bb6f84ef933555e213ad86cce7edd549b4c4f3fda7b9e79e7435c6edafc61"
+    },
+    "contracts/contracts/D17Locker.sol": {
+      "sha256": "3e4463fa56d68c5969268fbc77ac1c3b7bbc16fd7499ae32fe27293063cb2d00"
+    },
+    "contracts/contracts/D17LockerFactory.sol": {
+      "sha256": "9cf7df3119290df5ff2449c743dbdb15ac02a9aa44bfd6a187c6ca9bb3ae8027"
+    },
+    "contracts/contracts/D17Token.sol": {
+      "sha256": "cecfdd744d4ede0f014a84870d442cfa6cd6b9216174d8bde40a580d844dee14"
+    },
+    "contracts/contracts/D17TokenFactory.sol": {
+      "sha256": "7b839f8460507b8fccc8b7ba5be4cee6a9fe4c366100acc210725a2461000661"
+    },
+    "contracts/contracts/interfaces/ID17.sol": {
+      "sha256": "2f5921c0cd50cefdc130040a8c71c1ca40f659d4ff834e3f5a028ca586fbc34e"
+    },
+    "contracts/contracts/interfaces/ID17LaunchFactory.sol": {
+      "sha256": "8b2bf5fd6aa04c3a838ab919c89260612c8e8044bf7ab8663219b8cd1be8fc54"
+    },
+    "contracts/contracts/lib/D17SafeTransfer.sol": {
+      "sha256": "b1243497033f93f86cc7308f157b36c0c2a02b40ec3e4b332e479b218ad8e714"
+    }
+  },
+  "contracts": {
+    "D17Factory": {
+      "source": "contracts/contracts/D17Factory.sol",
+      "abiSha256": "65b5c98c9fdfb5f54106fc6b52622d35ae731699001b80bcfec2b219152b2675",
+      "creationBytecodeBytes": 11872,
+      "creationBytecodeKeccak256": "0x58d0906835c8c42290e6e64aeb39f7e699aa68ef9096de4b9c25d23b3b41bf2e",
+      "deployedBytecodeBytes": 11021,
+      "deployedBytecodeKeccak256": "0xbe7ebc4f311dbe8acb3bd450b22aea93e7b3530013d91e5e9fe0476f1570247e",
+      "immutableReferences": {
+        "97": [
+          {
+            "length": 32,
+            "start": 8483
+          }
+        ],
+        "99": [
+          {
+            "length": 32,
+            "start": 848
+          }
+        ],
+        "101": [
+          {
+            "length": 32,
+            "start": 3481
+          },
+          {
+            "length": 32,
+            "start": 8790
+          }
+        ]
+      },
+      "artifactCreationBytecodeMatch": true,
+      "artifactAbiMatch": true
+    },
+    "D17FeeConfig": {
+      "source": "contracts/contracts/D17FeeConfig.sol",
+      "abiSha256": "68267e5c6aa0bf9b4ac3662678a562d60ce5e80262db9ee73c4774fab8368fd8",
+      "creationBytecodeBytes": 1703,
+      "creationBytecodeKeccak256": "0xe9092d3d496f84a30f580b34d6e815290e01eaf77392cab1d091b41c3dfb63c0",
+      "deployedBytecodeBytes": 1198,
+      "deployedBytecodeKeccak256": "0x2361420de4b744ce06da842c0fcfc1471f44109fb0a7e1fe14393d56806c2827",
+      "immutableReferences": {},
+      "artifactCreationBytecodeMatch": true,
+      "artifactAbiMatch": true
+    },
+    "D17FeeSplitter": {
+      "source": "contracts/contracts/D17FeeSplitter.sol",
+      "abiSha256": "03858809aa90f2c6c569f76fe32ca9df55baa517accc06f99d706919ccea2cf5",
+      "creationBytecodeBytes": 4104,
+      "creationBytecodeKeccak256": "0xd278f90af2d6d4b2a879e1bc2571b72b8c8168e901c5f9135651ed23f2cb1027",
+      "deployedBytecodeBytes": 2506,
+      "deployedBytecodeKeccak256": "0x8648d65ecff5f1c7a39085e09bbc62f9a7a3393467a3964a3340d879134306db",
+      "immutableReferences": {
+        "1761": [
+          {
+            "length": 32,
+            "start": 155
+          },
+          {
+            "length": 32,
+            "start": 200
+          },
+          {
+            "length": 32,
+            "start": 492
+          }
+        ]
+      },
+      "artifactCreationBytecodeMatch": true,
+      "artifactAbiMatch": true
+    },
+    "D17TokenFactory": {
+      "source": "contracts/contracts/D17TokenFactory.sol",
+      "abiSha256": "29f79b17112eed416f73a7d6db8f978b890398dea3092bba6e9a2d21640a1871",
+      "creationBytecodeBytes": 12603,
+      "creationBytecodeKeccak256": "0x6b6c50d2e227e56a2fd2145501435949a4ae84d1473cf07bb58a619da22ab1a9",
+      "deployedBytecodeBytes": 12371,
+      "deployedBytecodeKeccak256": "0x0c1c28e91a1460e7eda7f05bd72f6cd7604bd578ab4414be12b118515cbb2c65",
+      "immutableReferences": {},
+      "artifactCreationBytecodeMatch": true,
+      "artifactAbiMatch": true
+    },
+    "D17LiquidityVaultFactory": {
+      "source": "contracts/contracts/D17LiquidityVaultFactory.sol",
+      "abiSha256": "84a8de263771d863a8f73c4b5fd74fb0eb8e87f1539560492db8c548e15c5417",
+      "creationBytecodeBytes": 11932,
+      "creationBytecodeKeccak256": "0x447bd233eba02141f9629e76467bda131ee182f9e8210b0875d55c06ab898379",
+      "deployedBytecodeBytes": 11700,
+      "deployedBytecodeKeccak256": "0x3f96bc8166e459c101d72c51a2062dc6f1b45364994410695f65d61bef0c84fe",
+      "immutableReferences": {},
+      "artifactCreationBytecodeMatch": true,
+      "artifactAbiMatch": true
+    },
+    "D17LaunchDeployer": {
+      "source": "contracts/contracts/D17LaunchDeployer.sol",
+      "abiSha256": "fc0e96315479a3a8ac6a7de00d5ecca6bb4ba4410dc653066448725c64e903d2",
+      "creationBytecodeBytes": 22991,
+      "creationBytecodeKeccak256": "0xcc9b8c20a34ccf32d39e3f45bf87b11b996871e55cef41374879a4037fbbe6b6",
+      "deployedBytecodeBytes": 22759,
+      "deployedBytecodeKeccak256": "0xdaa8b8e4e9ea0439bc1678e1876cb6ea2f2c894e9193d08f7dd3189854670669",
+      "immutableReferences": {},
+      "artifactCreationBytecodeMatch": true,
+      "artifactAbiMatch": true
+    },
+    "D17LaunchFactory": {
+      "source": "contracts/contracts/D17LaunchFactory.sol",
+      "abiSha256": "efaf4ad364fc7e587f328263f00049a337f9081bcca624f1b7a3dccf602c3f13",
+      "creationBytecodeBytes": 6004,
+      "creationBytecodeKeccak256": "0xa875454d7fd496ef3e0b33dd97c68c5260abdfc916586ac016c7d5534a604e27",
+      "deployedBytecodeBytes": 5129,
+      "deployedBytecodeKeccak256": "0x02ae8fe09f95aa2e9c43d609341358a963eced50fd9e27a8a5e86c9014265144",
+      "immutableReferences": {
+        "5578": [
+          {
+            "length": 32,
+            "start": 301
+          },
+          {
+            "length": 32,
+            "start": 665
+          },
+          {
+            "length": 32,
+            "start": 1131
+          },
+          {
+            "length": 32,
+            "start": 2071
+          },
+          {
+            "length": 32,
+            "start": 2482
+          },
+          {
+            "length": 32,
+            "start": 4535
+          }
+        ],
+        "5580": [
+          {
+            "length": 32,
+            "start": 117
+          },
+          {
+            "length": 32,
+            "start": 383
+          },
+          {
+            "length": 32,
+            "start": 586
+          }
+        ],
+        "5582": [
+          {
+            "length": 32,
+            "start": 2265
+          },
+          {
+            "length": 32,
+            "start": 4140
+          },
+          {
+            "length": 32,
+            "start": 4470
+          }
+        ],
+        "5584": [
+          {
+            "length": 32,
+            "start": 1992
+          },
+          {
+            "length": 32,
+            "start": 4015
+          },
+          {
+            "length": 32,
+            "start": 4402
+          }
+        ]
+      },
+      "artifactCreationBytecodeMatch": true,
+      "artifactAbiMatch": true
+    },
+    "D17LockerFactory": {
+      "source": "contracts/contracts/D17LockerFactory.sol",
+      "abiSha256": "943ca6a210c9def9054634c331415c7d162d75b709cababe68541a93e2d8f722",
+      "creationBytecodeBytes": 10598,
+      "creationBytecodeKeccak256": "0x798d644dc8296d8d894546ebf4a30d266907fe0da9e16c7f362de84a4ead8c72",
+      "deployedBytecodeBytes": 10341,
+      "deployedBytecodeKeccak256": "0x9aec57b7e90d6e7829fd2e71f16424076071b9c02f31a445b0461b8cca6c5726",
+      "immutableReferences": {
+        "8923": [
+          {
+            "length": 32,
+            "start": 126
+          },
+          {
+            "length": 32,
+            "start": 626
+          }
+        ]
+      },
+      "artifactCreationBytecodeMatch": true,
+      "artifactAbiMatch": true
+    },
+    "D17Launch": {
+      "source": "contracts/contracts/D17Launch.sol",
+      "abiSha256": "d19050b616229a69bf7c1b53cd793d224714450f4f0c495b03f3f1b7b9f32807",
+      "creationBytecodeBytes": 21323,
+      "creationBytecodeKeccak256": "0x88981bf39d2f7da33cf22bd719badc79e9b268e4d5b1adcceecff2394fd94eda",
+      "deployedBytecodeBytes": 17557,
+      "deployedBytecodeKeccak256": "0x1ee49cd7056cadd149705e4a1bad8bea13bea5fb9972bb414b459b7a7bbcedd9",
+      "immutableReferences": {
+        "2186": [
+          {
+            "length": 32,
+            "start": 2142
+          },
+          {
+            "length": 32,
+            "start": 2782
+          },
+          {
+            "length": 32,
+            "start": 3794
+          },
+          {
+            "length": 32,
+            "start": 4964
+          },
+          {
+            "length": 32,
+            "start": 5206
+          },
+          {
+            "length": 32,
+            "start": 9719
+          },
+          {
+            "length": 32,
+            "start": 10995
+          }
+        ],
+        "2188": [
+          {
+            "length": 32,
+            "start": 9285
+          },
+          {
+            "length": 32,
+            "start": 11672
+          }
+        ],
+        "2190": [
+          {
+            "length": 32,
+            "start": 1520
+          },
+          {
+            "length": 32,
+            "start": 3252
+          },
+          {
+            "length": 32,
+            "start": 3302
+          },
+          {
+            "length": 32,
+            "start": 3838
+          },
+          {
+            "length": 32,
+            "start": 5564
+          },
+          {
+            "length": 32,
+            "start": 5732
+          },
+          {
+            "length": 32,
+            "start": 6867
+          },
+          {
+            "length": 32,
+            "start": 16451
+          }
+        ],
+        "2192": [
+          {
+            "length": 32,
+            "start": 3878
+          },
+          {
+            "length": 32,
+            "start": 7572
+          },
+          {
+            "length": 32,
+            "start": 10324
+          }
+        ],
+        "2194": [
+          {
+            "length": 32,
+            "start": 3918
+          },
+          {
+            "length": 32,
+            "start": 7674
+          },
+          {
+            "length": 32,
+            "start": 8417
+          }
+        ],
+        "2196": [
+          {
+            "length": 32,
+            "start": 3958
+          },
+          {
+            "length": 32,
+            "start": 8286
+          }
+        ],
+        "2198": [
+          {
+            "length": 32,
+            "start": 4006
+          },
+          {
+            "length": 32,
+            "start": 7430
+          },
+          {
+            "length": 32,
+            "start": 13377
+          },
+          {
+            "length": 32,
+            "start": 14318
+          },
+          {
+            "length": 32,
+            "start": 14510
+          },
+          {
+            "length": 32,
+            "start": 15226
+          }
+        ],
+        "2200": [
+          {
+            "length": 32,
+            "start": 4052
+          },
+          {
+            "length": 32,
+            "start": 9149
+          },
+          {
+            "length": 32,
+            "start": 13923
+          },
+          {
+            "length": 32,
+            "start": 14439
+          },
+          {
+            "length": 32,
+            "start": 14631
+          },
+          {
+            "length": 32,
+            "start": 14996
+          },
+          {
+            "length": 32,
+            "start": 15424
+          }
+        ],
+        "2202": [
+          {
+            "length": 32,
+            "start": 4093
+          },
+          {
+            "length": 32,
+            "start": 9057
+          },
+          {
+            "length": 32,
+            "start": 12707
+          }
+        ],
+        "2204": [
+          {
+            "length": 32,
+            "start": 4133
+          },
+          {
+            "length": 32,
+            "start": 7253
+          },
+          {
+            "length": 32,
+            "start": 12747
+          },
+          {
+            "length": 32,
+            "start": 12792
+          }
+        ],
+        "2206": [
+          {
+            "length": 32,
+            "start": 4172
+          },
+          {
+            "length": 32,
+            "start": 8231
+          },
+          {
+            "length": 32,
+            "start": 9823
+          }
+        ],
+        "2208": [
+          {
+            "length": 32,
+            "start": 4211
+          },
+          {
+            "length": 32,
+            "start": 11971
+          },
+          {
+            "length": 32,
+            "start": 13457
+          }
+        ],
+        "2210": [
+          {
+            "length": 32,
+            "start": 1650
+          },
+          {
+            "length": 32,
+            "start": 4250
+          },
+          {
+            "length": 32,
+            "start": 13509
+          }
+        ],
+        "2212": [
+          {
+            "length": 32,
+            "start": 4409
+          },
+          {
+            "length": 32,
+            "start": 9211
+          },
+          {
+            "length": 32,
+            "start": 15615
+          },
+          {
+            "length": 32,
+            "start": 16744
+          }
+        ],
+        "2214": [
+          {
+            "length": 32,
+            "start": 4450
+          },
+          {
+            "length": 32,
+            "start": 10559
+          },
+          {
+            "length": 32,
+            "start": 15662
+          },
+          {
+            "length": 32,
+            "start": 16787
+          }
+        ],
+        "2216": [
+          {
+            "length": 32,
+            "start": 4490
+          },
+          {
+            "length": 32,
+            "start": 6521
+          },
+          {
+            "length": 32,
+            "start": 11462
+          }
+        ],
+        "2218": [
+          {
+            "length": 32,
+            "start": 4530
+          },
+          {
+            "length": 32,
+            "start": 6141
+          },
+          {
+            "length": 32,
+            "start": 14148
+          },
+          {
+            "length": 32,
+            "start": 14702
+          },
+          {
+            "length": 32,
+            "start": 14757
+          },
+          {
+            "length": 32,
+            "start": 14836
+          },
+          {
+            "length": 32,
+            "start": 16167
+          },
+          {
+            "length": 32,
+            "start": 17019
+          }
+        ],
+        "2220": [
+          {
+            "length": 32,
+            "start": 4569
+          },
+          {
+            "length": 32,
+            "start": 10618
+          },
+          {
+            "length": 32,
+            "start": 14110
+          },
+          {
+            "length": 32,
+            "start": 16222
+          }
+        ],
+        "2222": [
+          {
+            "length": 32,
+            "start": 4608
+          },
+          {
+            "length": 32,
+            "start": 8173
+          }
+        ],
+        "2224": [
+          {
+            "length": 32,
+            "start": 4648
+          },
+          {
+            "length": 32,
+            "start": 6226
+          }
+        ],
+        "2226": [
+          {
+            "length": 32,
+            "start": 4688
+          },
+          {
+            "length": 32,
+            "start": 11800
+          }
+        ],
+        "2228": [
+          {
+            "length": 32,
+            "start": 4727
+          },
+          {
+            "length": 32,
+            "start": 10771
+          }
+        ],
+        "2230": [
+          {
+            "length": 32,
+            "start": 4770
+          },
+          {
+            "length": 32,
+            "start": 4879
+          }
+        ]
+      },
+      "artifactCreationBytecodeMatch": true,
+      "artifactAbiMatch": true
+    },
+    "D17Locker": {
+      "source": "contracts/contracts/D17Locker.sol",
+      "abiSha256": "7506c98d9f358ddcff2389657555e8c9a9717b9d9cbc6baabc0831a74d3c7803",
+      "creationBytecodeBytes": 9623,
+      "creationBytecodeKeccak256": "0x8bfc4732ec3d5f2310bef40ff7faa2131917938931d0b593e45d51ff8ee7ad2b",
+      "deployedBytecodeBytes": 9104,
+      "deployedBytecodeKeccak256": "0x2796ddec04ff9f36a77cf3a4df95a7c03452cb45636e95e4a4ca425026c66b34",
+      "immutableReferences": {
+        "7451": [
+          {
+            "length": 32,
+            "start": 1026
+          },
+          {
+            "length": 32,
+            "start": 1514
+          },
+          {
+            "length": 32,
+            "start": 1941
+          },
+          {
+            "length": 32,
+            "start": 2267
+          },
+          {
+            "length": 32,
+            "start": 2888
+          },
+          {
+            "length": 32,
+            "start": 3991
+          },
+          {
+            "length": 32,
+            "start": 4294
+          },
+          {
+            "length": 32,
+            "start": 4711
+          },
+          {
+            "length": 32,
+            "start": 4942
+          },
+          {
+            "length": 32,
+            "start": 7969
+          }
+        ],
+        "7453": [
+          {
+            "length": 32,
+            "start": 937
+          },
+          {
+            "length": 32,
+            "start": 6652
+          }
+        ],
+        "7455": [
+          {
+            "length": 32,
+            "start": 1599
+          },
+          {
+            "length": 32,
+            "start": 3344
+          },
+          {
+            "length": 32,
+            "start": 4498
+          },
+          {
+            "length": 32,
+            "start": 4815
+          },
+          {
+            "length": 32,
+            "start": 5068
+          },
+          {
+            "length": 32,
+            "start": 6538
+          },
+          {
+            "length": 32,
+            "start": 8249
+          },
+          {
+            "length": 32,
+            "start": 8370
+          },
+          {
+            "length": 32,
+            "start": 8433
+          }
+        ]
+      },
+      "artifactCreationBytecodeMatch": true,
+      "artifactAbiMatch": true
+    },
+    "D17LiquidityVault": {
+      "source": "contracts/contracts/D17LiquidityVault.sol",
+      "abiSha256": "b751788419e9bc77c259e2be8ee8b63befbce7cc9fcef757b6732cdef2df1a26",
+      "creationBytecodeBytes": 10496,
+      "creationBytecodeKeccak256": "0x51619bd0bf880cd3278d3d7aa55568e45380e885866a1493db188c8234725725",
+      "deployedBytecodeBytes": 9141,
+      "deployedBytecodeKeccak256": "0xccb95afd11d74808592aa653f72dc947dd3c56382f9fc7f8bcd39f8db1443ae4",
+      "immutableReferences": {
+        "6036": [
+          {
+            "length": 32,
+            "start": 579
+          },
+          {
+            "length": 32,
+            "start": 1634
+          },
+          {
+            "length": 32,
+            "start": 3879
+          },
+          {
+            "length": 32,
+            "start": 5055
+          },
+          {
+            "length": 32,
+            "start": 5587
+          },
+          {
+            "length": 32,
+            "start": 6067
+          },
+          {
+            "length": 32,
+            "start": 6151
+          },
+          {
+            "length": 32,
+            "start": 7505
+          },
+          {
+            "length": 32,
+            "start": 8038
+          },
+          {
+            "length": 32,
+            "start": 8329
+          }
+        ],
+        "6038": [
+          {
+            "length": 32,
+            "start": 1093
+          },
+          {
+            "length": 32,
+            "start": 1766
+          },
+          {
+            "length": 32,
+            "start": 2200
+          },
+          {
+            "length": 32,
+            "start": 2404
+          },
+          {
+            "length": 32,
+            "start": 3955
+          },
+          {
+            "length": 32,
+            "start": 4535
+          },
+          {
+            "length": 32,
+            "start": 5215
+          },
+          {
+            "length": 32,
+            "start": 5406
+          },
+          {
+            "length": 32,
+            "start": 5673
+          },
+          {
+            "length": 32,
+            "start": 5865
+          },
+          {
+            "length": 32,
+            "start": 7088
+          },
+          {
+            "length": 32,
+            "start": 8599
+          }
+        ],
+        "6040": [
+          {
+            "length": 32,
+            "start": 640
+          },
+          {
+            "length": 32,
+            "start": 1212
+          },
+          {
+            "length": 32,
+            "start": 1864
+          },
+          {
+            "length": 32,
+            "start": 2077
+          },
+          {
+            "length": 32,
+            "start": 2452
+          },
+          {
+            "length": 32,
+            "start": 3486
+          },
+          {
+            "length": 32,
+            "start": 4250
+          },
+          {
+            "length": 32,
+            "start": 4576
+          },
+          {
+            "length": 32,
+            "start": 5182
+          },
+          {
+            "length": 32,
+            "start": 5499
+          },
+          {
+            "length": 32,
+            "start": 5789
+          },
+          {
+            "length": 32,
+            "start": 5908
+          },
+          {
+            "length": 32,
+            "start": 7055
+          }
+        ],
+        "6042": [
+          {
+            "length": 32,
+            "start": 1506
+          }
+        ],
+        "6044": [
+          {
+            "length": 32,
+            "start": 4182
+          },
+          {
+            "length": 32,
+            "start": 5133
+          }
+        ],
+        "6046": [
+          {
+            "length": 32,
+            "start": 1323
+          },
+          {
+            "length": 32,
+            "start": 3608
+          },
+          {
+            "length": 32,
+            "start": 4114
+          },
+          {
+            "length": 32,
+            "start": 4671
+          }
+        ]
+      },
+      "artifactCreationBytecodeMatch": true,
+      "artifactAbiMatch": true
+    },
+    "D17Token": {
+      "source": "contracts/contracts/D17Token.sol",
+      "abiSha256": "f663d263243055ee0091d28cf6debeb628732ab33b0ae78373215a407d6a1c91",
+      "creationBytecodeBytes": 10963,
+      "creationBytecodeKeccak256": "0x700ae11bee64c3ca142cd436646a7f5aadc305706fa820aa63e85b2502d18cdc",
+      "deployedBytecodeBytes": 9386,
+      "deployedBytecodeKeccak256": "0x8db1130921af01f5f46314f4016b4e6c4b3648cbe06a4548d2c6a8a900ceab74",
+      "immutableReferences": {
+        "9053": [
+          {
+            "length": 32,
+            "start": 1617
+          },
+          {
+            "length": 32,
+            "start": 4201
+          }
+        ]
+      },
+      "artifactCreationBytecodeMatch": true,
+      "artifactAbiMatch": true
+    }
+  }
+}

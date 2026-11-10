@@ -1,0 +1,38 @@
+{
+  "name": "@d17/contracts",
+  "version": "1.0.0",
+  "private": false,
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": "^22.22.2 || ^24.15.0 || >=26.0.0",
+    "npm": "12.2.1"
+  },
+  "scripts": {
+    "compile": "hardhat compile",
+    "clean": "hardhat clean",
+    "test": "node test/local-e2e.mjs && node test/hardening-e2e.mjs && node test/mainnet-floors-e2e.mjs && node test/fee-splitter-e2e.mjs && node test/failed-refund-remediation.mjs",
+    "test:fuzz": "node test/fuzz-invariants.mjs",
+    "demo:local": "node scripts/local-demo.mjs",
+    "demo:fund": "node scripts/local-fund.mjs",
+    "build:abi": "node scripts/export-abi.mjs && node scripts/build-explorer.mjs",
+    "check:explorer": "node scripts/check-explorer.mjs",
+    "deploy:factory": "node scripts/deploy-factory.mjs",
+    "verify:factory": "node scripts/verify-factory-deployment.mjs",
+    "verify:etherscan": "node scripts/verify-etherscan.mjs",
+    "check:env": "node scripts/check-env.mjs",
+    "distribute:fees": "node scripts/distribute-fees.mjs",
+    "inspect:launch": "node scripts/inspect-launch.mjs",
+    "publish:deployment": "node scripts/publish-deployment.mjs",
+    "create:launch": "node scripts/create-launch.mjs",
+    "test:wallet-target": "hardhat compile && node test/wallet-target-guard.mjs",
+    "test:release-plan": "node test/release-plan-e2e.mjs",
+    "test:cross-launch": "node test/self-review-cross-launch.mjs",
+    "test:browser": "node test/rendered-wallet-e2e.mjs"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-verify": "3.1.4",
+    "ethers": "^6.16.0",
+    "hardhat": "^3.18.1"
+  }
+}

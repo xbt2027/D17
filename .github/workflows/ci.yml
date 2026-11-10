@@ -1,0 +1,30 @@
+name: Source review
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+env:
+  NEXT_TELEMETRY_DISABLED: 1
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.22.1
+          cache: npm
+      - run: node scripts/verify-sharing.mjs
+      - run: npm install --global npm@12.2.1 --ignore-scripts
+      - run: npm ci --ignore-scripts
+      - run: npm run compile -w @d17/contracts -- --force
+      - run: npm test
+      - run: npm run build
+      - run: npm run verify:candidate-build
+      - run: npm run check:docs
+      # Source review only. Separate release approval remains required.

@@ -1,0 +1,32 @@
+{
+  "source_candidate": "65fedfed290158a0dcd25acd73e5585d73ae0f33",
+  "solidity_files_byte_identical": 21,
+  "contract_test_files_byte_identical": 22,
+  "root_and_browser_dependency_locks_unchanged": true,
+  "known_personal_identifier_matches": 0,
+  "language_scan_findings": 0,
+  "git_history_included": false,
+  "raw_working_logs_included": false,
+  "source_files_retained_unchanged": 324,
+  "source_files_adapted": [
+    ".github/workflows/ci.yml",
+    "AUDITOR_PACK/README_SCOPE.md",
+    "CHANGELOG.md",
+    "DECISIONS.md",
+    "README.md",
+    "RISKS.md",
+    "SOURCE_INTEGRITY.md",
+    "TEST_RESULTS.md",
+    "VERIFICATION.md",
+    "apps/web/.env.example",
+    "apps/web/components/content-shell.tsx",
+    "apps/web/content/site-content.json",
+    "apps/web/lib/site-content.ts",
+    "docs/CONTRACTS_TECHNICAL.md",
+    "docs/MAINTAINERS.md",
+    "docs/V15_HARDENING.md",
+    ".gitignore"
+  ],
+  "original_source_files_omitted_count": 944,
+  "validation_scope": "Source equivalence, decoded text scan, document links and export checksums. Not a new execution of contract tests, full application build or a deployment. A full TypeScript check was not run because dependencies were not installed."
+}

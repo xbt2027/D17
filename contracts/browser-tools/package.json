@@ -1,0 +1,10 @@
+{
+  "name": "d17-rendered-browser-tools",
+  "private": true,
+  "type": "module",
+  "description": "Isolated local-only rendered wallet test dependencies; never part of the web bundle.",
+  "dependencies": {
+    "@sparticuz/chromium": "153.0.0",
+    "playwright": "1.62.1"
+  }
+}

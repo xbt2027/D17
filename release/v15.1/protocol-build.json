@@ -1,0 +1,815 @@
+{
+  "schema": "d17-v15.1-candidate-v1",
+  "status": "preliminary-not-audited",
+  "mainnet": "NO-GO",
+  "compiler": {
+    "version": "0.8.38+commit.1835d247",
+    "viaIR": true,
+    "optimizerRuns": 1,
+    "evmVersion": "shanghai",
+    "bytecodeHash": "none"
+  },
+  "sourceSha256": {
+    "contracts/D17Factory.sol": "10478d44b1d1df622a5107d7f5dd7e884cdcdc013b6e49d471cb129c9ea030d5",
+    "contracts/D17FeeConfig.sol": "b9b11c6480d3a67e86e03a3bdec047c8b7f6ae6e26a60914f262573c2a796623",
+    "contracts/D17FeeSplitter.sol": "7688c8f7bcd3d83834ef507b36222baad69916dd94efc526fafa73b96d21a3f5",
+    "contracts/D17Launch.sol": "acf57995d2d44065ff167ee3e645ad1ad05ffc0c44de5b9ffa5c7c484ab0568e",
+    "contracts/D17LaunchDeployer.sol": "a97ce96944182518514e880027ff981af7b1ea63b24832196927a7ee3df7fd01",
+    "contracts/D17LaunchFactory.sol": "b4bccce5836d3abe34805c7145b2572fb6f40fec604d6e55617fe9ba132af98f",
+    "contracts/D17LiquidityVault.sol": "2e891f1d1d6d12d84fd38265eabc78a918e2c41a3b42540dc9ea9f4f627c7162",
+    "contracts/D17LiquidityVaultFactory.sol": "d93bb6f84ef933555e213ad86cce7edd549b4c4f3fda7b9e79e7435c6edafc61",
+    "contracts/D17Locker.sol": "a39cf68ae7925180ba62ac65e4e545488338a0a4f3cc86fc959a8d3b1a8ebae2",
+    "contracts/D17LockerFactory.sol": "30030b60bea24aff8b70db3a328d43a9cbcbe18e1bee74ae3cab4562cfabe6e1",
+    "contracts/D17Token.sol": "cecfdd744d4ede0f014a84870d442cfa6cd6b9216174d8bde40a580d844dee14",
+    "contracts/D17TokenFactory.sol": "7b839f8460507b8fccc8b7ba5be4cee6a9fe4c366100acc210725a2461000661",
+    "contracts/interfaces/ID17.sol": "12a6a515658fda46163ed26781eefde9ef082a422f6e418362a3e0b98fce030f",
+    "contracts/interfaces/ID17LaunchFactory.sol": "8b2bf5fd6aa04c3a838ab919c89260612c8e8044bf7ab8663219b8cd1be8fc54",
+    "contracts/lib/D17SafeTransfer.sol": "b1243497033f93f86cc7308f157b36c0c2a02b40ec3e4b332e479b218ad8e714",
+    "contracts/test/CallbackWETH.sol": "e6d90f29b265ec9a31a32e1739029afb174c07ddcde2bf09108db8f0ebf60ebf",
+    "contracts/test/TestERC20.sol": "9b3c2fe1431b436bc6c169fa38a2529b4567bf16cdc328ac29408f8e685f6129",
+    "contracts/test/TestV2Factory.sol": "e92ced3c98b318ea9aae5ca7e66aa48f53b116422b93be3b0e18770d3fcbe45c",
+    "contracts/test/TestV2Pair.sol": "abfe3342f8d3fcf92099537bea53c6015b07146621eec442967a6db8b80e709a",
+    "contracts/test/TestV2Router.sol": "0be57cdfeab3eb5145b4e4b71ec21f77d77894ca8de5831ac2656b34d07e3649",
+    "contracts/test/TestWETH.sol": "457a73a8b0fafcb5f268a4fac397a864148f5c7953eec0475c51beb540513bc5"
+  },
+  "contracts": {
+    "D17Factory": {
+      "abiSha256": "d2392c982166ae3331732bf35c74cc5685aee5596d6d672fbf8c896c00e99bc9",
+      "creationKeccak256": "0x98d3a3f522cdc23994e23e2b2dbb7a8facb1217e7bb95b7aca649d48480bd4c3",
+      "runtimeTemplateKeccak256": "0x9f980944d353fee5bf00534cffe4df6d72c3bc198a1c20dea287b9e4a356ac63",
+      "immutableReferences": {
+        "114": [
+          {
+            "length": 32,
+            "start": 9013
+          }
+        ],
+        "116": [
+          {
+            "length": 32,
+            "start": 861
+          }
+        ],
+        "118": [
+          {
+            "length": 32,
+            "start": 3550
+          },
+          {
+            "length": 32,
+            "start": 5668
+          },
+          {
+            "length": 32,
+            "start": 5827
+          },
+          {
+            "length": 32,
+            "start": 9336
+          }
+        ]
+      }
+    },
+    "D17FeeConfig": {
+      "abiSha256": "77af2a03647f2e136699c61fb313575d773e7678fd4bf64b892d36fcc38c9bc0",
+      "creationKeccak256": "0x4c3f80f4276d6cbad2a29d7395cedcdf9fd17a2f1694358c288ff0bfef79e18b",
+      "runtimeTemplateKeccak256": "0xf9d451fd356d4f3b35b96ca2de109afad47c862ff89659b8d954206827ccd920",
+      "immutableReferences": {}
+    },
+    "D17FeeSplitter": {
+      "abiSha256": "710b2c98645a4cb7718e9b83da3ba1d0bb715bf05902f5420c9a238b331f5705",
+      "creationKeccak256": "0xbf0ec2e111c6991454a2c2813a1052e63d3ee25751c1108e6c98d44175520f25",
+      "runtimeTemplateKeccak256": "0x91763a63b8c362007bd01745afe58cc05208f1f416549c2820845a3127ba8d1d",
+      "immutableReferences": {
+        "1831": [
+          {
+            "length": 32,
+            "start": 172
+          },
+          {
+            "length": 32,
+            "start": 228
+          },
+          {
+            "length": 32,
+            "start": 519
+          }
+        ]
+      }
+    },
+    "D17Launch": {
+      "abiSha256": "ba9fb70dece4acb2f7bb5cdf1dcd92a335a278059b32f3be80bfa2c3376bad6b",
+      "creationKeccak256": "0x2ef655fc2b3e9eda1e23afbd6821858cd1f50ceee098ca5387b9513fe9701bbf",
+      "runtimeTemplateKeccak256": "0x56b9757e05185ad97a0f163cdc2b99c4d6d3bc02a05ce00d4e7c41b91ffe4e1c",
+      "immutableReferences": {
+        "2285": [
+          {
+            "length": 32,
+            "start": 2228
+          },
+          {
+            "length": 32,
+            "start": 3191
+          },
+          {
+            "length": 32,
+            "start": 3713
+          },
+          {
+            "length": 32,
+            "start": 4902
+          },
+          {
+            "length": 32,
+            "start": 5179
+          },
+          {
+            "length": 32,
+            "start": 10046
+          },
+          {
+            "length": 32,
+            "start": 11383
+          }
+        ],
+        "2287": [
+          {
+            "length": 32,
+            "start": 9584
+          },
+          {
+            "length": 32,
+            "start": 12115
+          }
+        ],
+        "2289": [
+          {
+            "length": 32,
+            "start": 1566
+          },
+          {
+            "length": 32,
+            "start": 3764
+          },
+          {
+            "length": 32,
+            "start": 5555
+          },
+          {
+            "length": 32,
+            "start": 5745
+          },
+          {
+            "length": 32,
+            "start": 6946
+          },
+          {
+            "length": 32,
+            "start": 16419
+          }
+        ],
+        "2291": [
+          {
+            "length": 32,
+            "start": 3808
+          },
+          {
+            "length": 32,
+            "start": 7785
+          },
+          {
+            "length": 32,
+            "start": 10720
+          }
+        ],
+        "2293": [
+          {
+            "length": 32,
+            "start": 3848
+          },
+          {
+            "length": 32,
+            "start": 7880
+          },
+          {
+            "length": 32,
+            "start": 8669
+          }
+        ],
+        "2295": [
+          {
+            "length": 32,
+            "start": 3888
+          },
+          {
+            "length": 32,
+            "start": 8539
+          }
+        ],
+        "2297": [
+          {
+            "length": 32,
+            "start": 3936
+          },
+          {
+            "length": 32,
+            "start": 7655
+          },
+          {
+            "length": 32,
+            "start": 14605
+          },
+          {
+            "length": 32,
+            "start": 15264
+          }
+        ],
+        "2299": [
+          {
+            "length": 32,
+            "start": 3981
+          },
+          {
+            "length": 32,
+            "start": 9459
+          },
+          {
+            "length": 32,
+            "start": 14195
+          },
+          {
+            "length": 32,
+            "start": 14714
+          },
+          {
+            "length": 32,
+            "start": 15030
+          },
+          {
+            "length": 32,
+            "start": 15440
+          }
+        ],
+        "2301": [
+          {
+            "length": 32,
+            "start": 4022
+          },
+          {
+            "length": 32,
+            "start": 9369
+          },
+          {
+            "length": 32,
+            "start": 13105
+          }
+        ],
+        "2303": [
+          {
+            "length": 32,
+            "start": 4063
+          },
+          {
+            "length": 32,
+            "start": 7478
+          },
+          {
+            "length": 32,
+            "start": 13145
+          },
+          {
+            "length": 32,
+            "start": 13195
+          }
+        ],
+        "2305": [
+          {
+            "length": 32,
+            "start": 4102
+          },
+          {
+            "length": 32,
+            "start": 8483
+          },
+          {
+            "length": 32,
+            "start": 10148
+          }
+        ],
+        "2307": [
+          {
+            "length": 32,
+            "start": 4141
+          },
+          {
+            "length": 32,
+            "start": 12406
+          },
+          {
+            "length": 32,
+            "start": 13799
+          }
+        ],
+        "2309": [
+          {
+            "length": 32,
+            "start": 1697
+          },
+          {
+            "length": 32,
+            "start": 4180
+          },
+          {
+            "length": 32,
+            "start": 13851
+          }
+        ],
+        "2311": [
+          {
+            "length": 32,
+            "start": 3449
+          },
+          {
+            "length": 32,
+            "start": 4339
+          },
+          {
+            "length": 32,
+            "start": 9521
+          },
+          {
+            "length": 32,
+            "start": 16711
+          }
+        ],
+        "2313": [
+          {
+            "length": 32,
+            "start": 3502
+          },
+          {
+            "length": 32,
+            "start": 4380
+          },
+          {
+            "length": 32,
+            "start": 10951
+          },
+          {
+            "length": 32,
+            "start": 16761
+          }
+        ],
+        "2315": [
+          {
+            "length": 32,
+            "start": 4421
+          },
+          {
+            "length": 32,
+            "start": 6570
+          },
+          {
+            "length": 32,
+            "start": 11887
+          }
+        ],
+        "2317": [
+          {
+            "length": 32,
+            "start": 4463
+          },
+          {
+            "length": 32,
+            "start": 6186
+          },
+          {
+            "length": 32,
+            "start": 14420
+          },
+          {
+            "length": 32,
+            "start": 14807
+          },
+          {
+            "length": 32,
+            "start": 16101
+          },
+          {
+            "length": 32,
+            "start": 17014
+          }
+        ],
+        "2319": [
+          {
+            "length": 32,
+            "start": 4502
+          },
+          {
+            "length": 32,
+            "start": 11010
+          },
+          {
+            "length": 32,
+            "start": 14382
+          },
+          {
+            "length": 32,
+            "start": 16156
+          }
+        ],
+        "2321": [
+          {
+            "length": 32,
+            "start": 4541
+          },
+          {
+            "length": 32,
+            "start": 8425
+          }
+        ],
+        "2323": [
+          {
+            "length": 32,
+            "start": 4580
+          },
+          {
+            "length": 32,
+            "start": 6273
+          }
+        ],
+        "2325": [
+          {
+            "length": 32,
+            "start": 4621
+          },
+          {
+            "length": 32,
+            "start": 12240
+          }
+        ],
+        "2327": [
+          {
+            "length": 32,
+            "start": 4660
+          },
+          {
+            "length": 32,
+            "start": 11168
+          }
+        ],
+        "2329": [
+          {
+            "length": 32,
+            "start": 4702
+          },
+          {
+            "length": 32,
+            "start": 4815
+          }
+        ]
+      }
+    },
+    "D17LaunchDeployer": {
+      "abiSha256": "97d592eac5ff56c5c1c483251cbe3e7073f1315831faa883b5d07dac0e85cce5",
+      "creationKeccak256": "0x3de464378d7adc115e1d8676d6fc1f61c805cd1dd7d530ffffe2a0b41d0bac11",
+      "runtimeTemplateKeccak256": "0xff21aa3d74c799cc64bcf9eea0dee3be59b7b1a72b90df59f8797ab06dedfb35",
+      "immutableReferences": {}
+    },
+    "D17LaunchFactory": {
+      "abiSha256": "bf35604f74e8d605db0c6625bd1b9eec53597163c5de337b463e00f63fd393f8",
+      "creationKeccak256": "0x459275b20be08b7cf5fe6eb2f859c36fdd23ea77cabf5dba94ecd950fdd77fe7",
+      "runtimeTemplateKeccak256": "0x27e53872db54561d5e93595e9379686b69dd7006a2b15fc3c2cd6c9d918d6fd9",
+      "immutableReferences": {
+        "5716": [
+          {
+            "length": 32,
+            "start": 301
+          },
+          {
+            "length": 32,
+            "start": 634
+          },
+          {
+            "length": 32,
+            "start": 1088
+          },
+          {
+            "length": 32,
+            "start": 2015
+          },
+          {
+            "length": 32,
+            "start": 2424
+          },
+          {
+            "length": 32,
+            "start": 4473
+          }
+        ],
+        "5718": [
+          {
+            "length": 32,
+            "start": 116
+          },
+          {
+            "length": 32,
+            "start": 377
+          }
+        ],
+        "5720": [
+          {
+            "length": 32,
+            "start": 2207
+          },
+          {
+            "length": 32,
+            "start": 4078
+          },
+          {
+            "length": 32,
+            "start": 4408
+          }
+        ],
+        "5722": [
+          {
+            "length": 32,
+            "start": 1937
+          },
+          {
+            "length": 32,
+            "start": 3953
+          },
+          {
+            "length": 32,
+            "start": 4340
+          }
+        ]
+      }
+    },
+    "D17LiquidityVault": {
+      "abiSha256": "65e04a1533bb6c08d935d9670b8a96ebd27585f0895fbbed5f2f7b26dca34e8f",
+      "creationKeccak256": "0x439ffe9281db3ce2a0d7501daa7995c7278842009fba4f826066a27ab582416d",
+      "runtimeTemplateKeccak256": "0x2bdc625b95357a8baec5c605f491e91a4cbdf48cf92dc108fbc5e417287a852b",
+      "immutableReferences": {
+        "6174": [
+          {
+            "length": 32,
+            "start": 1285
+          },
+          {
+            "length": 32,
+            "start": 1763
+          },
+          {
+            "length": 32,
+            "start": 2942
+          },
+          {
+            "length": 32,
+            "start": 4172
+          },
+          {
+            "length": 32,
+            "start": 6533
+          },
+          {
+            "length": 32,
+            "start": 7028
+          },
+          {
+            "length": 32,
+            "start": 7268
+          }
+        ],
+        "6176": [
+          {
+            "length": 32,
+            "start": 702
+          },
+          {
+            "length": 32,
+            "start": 3008
+          },
+          {
+            "length": 32,
+            "start": 3670
+          },
+          {
+            "length": 32,
+            "start": 4295
+          }
+        ],
+        "6178": [
+          {
+            "length": 32,
+            "start": 816
+          },
+          {
+            "length": 32,
+            "start": 2048
+          },
+          {
+            "length": 32,
+            "start": 2507
+          },
+          {
+            "length": 32,
+            "start": 3396
+          },
+          {
+            "length": 32,
+            "start": 3718
+          },
+          {
+            "length": 32,
+            "start": 4259
+          }
+        ],
+        "6180": [
+          {
+            "length": 32,
+            "start": 1200
+          }
+        ],
+        "6182": [
+          {
+            "length": 32,
+            "start": 3297
+          },
+          {
+            "length": 32,
+            "start": 4329
+          }
+        ],
+        "6184": [
+          {
+            "length": 32,
+            "start": 896
+          },
+          {
+            "length": 32,
+            "start": 2595
+          },
+          {
+            "length": 32,
+            "start": 3228
+          },
+          {
+            "length": 32,
+            "start": 3826
+          }
+        ]
+      }
+    },
+    "D17LiquidityVaultFactory": {
+      "abiSha256": "ed3a468f24d9296c1574d976b53cd62119367fc723caef71542921ff6325e053",
+      "creationKeccak256": "0x484e3e5798c8ed2620b3463194dd3396e17648a5401b0f9f0093ae0954184ae0",
+      "runtimeTemplateKeccak256": "0x311bbf69a935ab8b66c6d61183e4c86d3ea0698819b95411a45c7cc9e0426f69",
+      "immutableReferences": {}
+    },
+    "D17Locker": {
+      "abiSha256": "9e70c18350bbabdef5dc1d0540a977758d9ff127bdf77be6e8a291a7fb612a92",
+      "creationKeccak256": "0x328b9ed5c2859bb96d7315d3d75ace54ae086b98bddc03435c455d3e1f8f55d3",
+      "runtimeTemplateKeccak256": "0xf56a0d1a81fa32d2dc69cd9481aa5d32e46145af470fd0eddb40fb08ed829a89",
+      "immutableReferences": {
+        "7385": [
+          {
+            "length": 32,
+            "start": 1106
+          },
+          {
+            "length": 32,
+            "start": 1606
+          },
+          {
+            "length": 32,
+            "start": 2101
+          },
+          {
+            "length": 32,
+            "start": 2418
+          },
+          {
+            "length": 32,
+            "start": 3127
+          },
+          {
+            "length": 32,
+            "start": 4210
+          },
+          {
+            "length": 32,
+            "start": 4525
+          },
+          {
+            "length": 32,
+            "start": 4954
+          },
+          {
+            "length": 32,
+            "start": 5174
+          },
+          {
+            "length": 32,
+            "start": 8256
+          }
+        ],
+        "7387": [
+          {
+            "length": 32,
+            "start": 1027
+          },
+          {
+            "length": 32,
+            "start": 6895
+          }
+        ],
+        "7389": [
+          {
+            "length": 32,
+            "start": 1724
+          },
+          {
+            "length": 32,
+            "start": 3597
+          },
+          {
+            "length": 32,
+            "start": 4739
+          },
+          {
+            "length": 32,
+            "start": 5058
+          },
+          {
+            "length": 32,
+            "start": 5513
+          },
+          {
+            "length": 32,
+            "start": 6778
+          },
+          {
+            "length": 32,
+            "start": 8404
+          },
+          {
+            "length": 32,
+            "start": 8489
+          },
+          {
+            "length": 32,
+            "start": 8549
+          }
+        ]
+      }
+    },
+    "D17LockerFactory": {
+      "abiSha256": "696d8e7f0dd8cfac90e1c9d6807a8c383a664069be2fe59c94b4d71ea4cd2ddb",
+      "creationKeccak256": "0x6854b0196cd932eb3f093057712f2bbbd6f213a0b5d069d14729fff0eb92b7c3",
+      "runtimeTemplateKeccak256": "0xfedb904bff692a17434f5cdabb3895c9f748432e7a5818c6db2fc98bc18eed5f",
+      "immutableReferences": {
+        "8900": [
+          {
+            "length": 32,
+            "start": 239
+          },
+          {
+            "length": 32,
+            "start": 892
+          },
+          {
+            "length": 32,
+            "start": 1411
+          }
+        ]
+      }
+    },
+    "D17Token": {
+      "abiSha256": "2fcab1b7f5dceef5991203a997031a4008abb8f5f7f8479bff730c58312eacd1",
+      "creationKeccak256": "0x44e98127db7fae9023ad56b25ea63aefa8e961569e43aed62f07deef08486bec",
+      "runtimeTemplateKeccak256": "0xc549ef6780578567c88c93e90e7149e1c3dd7714c30eaa1b492f8f3895f6b78f",
+      "immutableReferences": {
+        "9147": [
+          {
+            "length": 32,
+            "start": 1650
+          },
+          {
+            "length": 32,
+            "start": 4326
+          }
+        ]
+      }
+    },
+    "D17TokenFactory": {
+      "abiSha256": "bcef2b50c61e6764db16572b8d6a967ca721b2e87ace5451261b16b36089a2ec",
+      "creationKeccak256": "0x009b6f9821fd774459e439c7c701c4797d4a442527a62b7ae2b0bb24df12d1cb",
+      "runtimeTemplateKeccak256": "0x19864e6dd4c8e27c2a80c6fa757631885ce57b201ce40d7eceed39ccda38521a",
+      "immutableReferences": {}
+    }
+  },
+  "artifactManifestSha256": "c91c60537371407e812cee1a23cbe5af4483839e954a6e5b318f531a6d4322bc",
+  "note": "Exact delivery commit is pinned in outer CHECKPOINT.json. Runtime templates require immutable reconstruction. Existing Sepolia is historical V15."
+}

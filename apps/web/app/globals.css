@@ -1,0 +1,449 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /*
+   * Economy of Words system - see DESIGN_DIRECTION.md.
+   * Paper is black, ink is white; hierarchy is alpha, not weight.
+   * dim/quiet are lifted slightly above the EoW originals so small
+   * mono text clears WCAG AA on pure black (quiet 0.46 ≈ 4.6:1).
+   */
+  --paper: #000000;
+  --panel: #070707;
+  --ink: #ffffff;
+  --dim: rgba(255, 255, 255, 0.75);
+  --quiet: rgba(255, 255, 255, 0.58);
+  --faint: #1c1c1c;
+  --hairline: #2a2a2a;
+  --live: #30d158;     /* happening now + WETH into the raise */
+  --alert: #ff453a;    /* failed / destructive + WETH out */
+  --electric: #0a84ff; /* only meaning: you / interactive links */
+
+  /* Concentration-bar ramp: largest holders boldest. Vars so the light
+     theme can invert the ramp (bright-on-black → dark-on-cream). */
+  --holder-0: #f4f4f4;
+  --holder-1: #dcdcdc;
+  --holder-2: #c6c6c6;
+  --holder-3: #b0b0b0;
+  --holder-4: #9c9c9c;
+  --holder-5: #8a8a8a;
+  --holder-6: #7a7a7a;
+  --holder-7: #6e6e6e;
+  --holder-8: #666666;
+  --holder-9: #606060;
+  --holder-10: #343434;
+
+  /* shadcn mapping */
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --card: var(--paper);
+  --card-foreground: var(--ink);
+  --popover: var(--panel);
+  --popover-foreground: var(--ink);
+  --primary: var(--ink);
+  --primary-foreground: var(--paper);
+  --secondary: var(--faint);
+  --secondary-foreground: var(--dim);
+  --muted: var(--faint);
+  --muted-foreground: var(--dim);
+  --accent: var(--faint);
+  --accent-foreground: var(--ink);
+  --destructive: var(--alert);
+  --destructive-foreground: var(--ink);
+  --border: var(--hairline);
+  --input: var(--hairline);
+  --ring: var(--dim);
+  --radius: 0rem;
+  --chart-1: var(--ink);
+  --chart-2: #8e8e8e;
+  --chart-3: #6a6a6a;
+  --chart-4: #4a4a4a;
+  --chart-5: var(--live);
+  --sidebar: var(--paper);
+  --sidebar-foreground: var(--ink);
+  --sidebar-primary: var(--ink);
+  --sidebar-primary-foreground: var(--paper);
+  --sidebar-accent: var(--faint);
+  --sidebar-accent-foreground: var(--ink);
+  --sidebar-border: var(--hairline);
+  --sidebar-ring: var(--dim);
+}
+
+@theme inline {
+  --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text',
+    system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-mono: var(--font-plex-mono), 'IBM Plex Mono', ui-monospace, 'SF Mono',
+    SFMono-Regular, Menlo, Monaco, 'Cascadia Mono', monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* EoW token utilities: text-ink, bg-paper, border-hairline, text-live, … */
+  --color-ink: var(--ink);
+  --color-paper: var(--paper);
+  --color-panel: var(--panel);
+  --color-dim: var(--dim);
+  --color-quiet: var(--quiet);
+  --color-faint: var(--faint);
+  --color-hairline: var(--hairline);
+  --color-live: var(--live);
+  --color-alert: var(--alert);
+  --color-electric: var(--electric);
+}
+
+/* Light mode - warm newsprint cream, never literal white. Same system:
+   hierarchy stays alpha-on-ink, accents darken just enough to keep AA
+   contrast on cream. Toggled via data-theme; dark stays the default. */
+html[data-theme='light'] {
+  color-scheme: light;
+  --paper: #f2efe6;
+  --panel: #ebe8dd;
+  --ink: #16140f;
+  --dim: rgba(22, 20, 15, 0.78);
+  --quiet: rgba(22, 20, 15, 0.57);
+  --faint: #e4e0d2;
+  --hairline: #d2cdbc;
+  --live: #14803d;
+  --alert: #c92f26;
+  --electric: #0057cc;
+  --chart-2: #6f6a5e;
+  --chart-3: #8d8779;
+  --chart-4: #aba595;
+  --holder-0: #221f18;
+  --holder-1: #363228;
+  --holder-2: #474235;
+  --holder-3: #575143;
+  --holder-4: #665f4f;
+  --holder-5: #746c5b;
+  --holder-6: #817967;
+  --holder-7: #8d8572;
+  --holder-8: #97907c;
+  --holder-9: #a19a86;
+  --holder-10: #b3ac97;
+}
+/* Grain reads fainter on cream - lift it a touch. */
+html[data-theme='light'] body::after {
+  opacity: 0.035;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    color-scheme: dark;
+    /* Paint the overscroll rubber-band region; without this the bounce
+       exposes an unpainted gap above/below the page on macOS. */
+    background: var(--paper);
+    overscroll-behavior: none;
+  }
+  body {
+    @apply bg-background text-foreground;
+    -webkit-font-smoothing: antialiased;
+    overscroll-behavior: none;
+  }
+  ::selection {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  :focus-visible {
+    outline: 1px solid var(--dim);
+    outline-offset: 2px;
+  }
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--faint) transparent;
+  }
+}
+
+/* Film grain over everything - the texture that keeps pure black alive. */
+body::after {
+  content: '';
+  position: fixed;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain-shift 0.9s steps(4, end) infinite;
+}
+@keyframes grain-shift {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-2%, 1%); }
+  50% { transform: translate(1%, -2%); }
+  75% { transform: translate(-1%, 2%); }
+  100% { transform: translate(0, 0); }
+}
+
+/* Motion vocabulary - fires on events, never decorates. */
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.rise {
+  opacity: 0;
+  animation: rise-in 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+}
+
+@keyframes feed-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.feed-in {
+  animation: feed-in 0.4s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@keyframes row-flash {
+  from { background-color: rgba(48, 209, 88, 0.16); }
+  to { background-color: transparent; }
+}
+.row-flash {
+  animation: row-flash 1.6s ease-out;
+}
+
+@keyframes stamp-in {
+  0% { opacity: 0; transform: scale(1.6) rotate(-8deg); }
+  60% { opacity: 1; transform: scale(0.96) rotate(-8deg); }
+  100% { opacity: 1; transform: scale(1) rotate(-8deg); }
+}
+.stamp-in {
+  animation: stamp-in 0.28s cubic-bezier(0.2, 0.9, 0.3, 1.4) both;
+}
+
+/* Pending transaction: a live-green segment orbits the element's hairline
+   border while the chain confirms. Falls back to a static green border. */
+@property --orbit-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+.tx-pending {
+  position: relative;
+  border-color: rgba(48, 209, 88, 0.4) !important;
+}
+.tx-pending::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  pointer-events: none;
+  padding: 1px;
+  background: conic-gradient(
+    from var(--orbit-angle),
+    rgba(48, 209, 88, 0) 0deg,
+    rgba(48, 209, 88, 0) 290deg,
+    var(--live) 335deg,
+    rgba(48, 209, 88, 0) 360deg
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  animation: orbit 1.4s linear infinite;
+}
+@keyframes orbit {
+  to {
+    --orbit-angle: 360deg;
+  }
+}
+
+/* Phones: keep toasts clear of the fixed mobile action bar. */
+@media (max-width: 599px) {
+  [data-sonner-toaster] {
+    --mobile-offset-bottom: calc(env(safe-area-inset-bottom, 0px) + 84px) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::after {
+    animation: none;
+  }
+  .rise,
+  .feed-in {
+    opacity: 1;
+    animation: none;
+  }
+  .row-flash,
+  .stamp-in {
+    animation: none;
+  }
+  [data-slot='dialog-overlay'],
+  [data-slot='dialog-content'] {
+    animation: none !important;
+    transition: none !important;
+  }
+  .tx-pending::after {
+    animation: none;
+    background: none;
+  }
+}
+
+/* Documentation pages (/docs, /blog, /progress): markdown rendered by lib/site-content.ts. */
+.d17-prose {
+  max-width: 46rem;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--dim);
+  overflow-wrap: anywhere;
+}
+.d17-prose > * + * {
+  margin-top: 1em;
+}
+.d17-prose h1,
+.d17-prose h2,
+.d17-prose h3,
+.d17-prose h4 {
+  position: relative;
+  color: var(--ink);
+  font-weight: 600;
+  line-height: 1.3;
+  scroll-margin-top: 1.5rem;
+}
+.d17-prose h1 {
+  font-size: 30px;
+}
+.d17-prose h2 {
+  margin-top: 2.2em;
+  padding-top: 0.6em;
+  border-top: 1px solid var(--hairline);
+  font-size: 22px;
+}
+.d17-prose hr + h2,
+.d17-prose > h2:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+.d17-prose h3 {
+  margin-top: 1.8em;
+  font-size: 18px;
+}
+.d17-prose h4 {
+  margin-top: 1.5em;
+  font-size: 16px;
+}
+.d17-prose .anchor {
+  position: absolute;
+  left: -1.1em;
+  color: var(--quiet);
+  text-decoration: none;
+  opacity: 0;
+}
+.d17-prose :is(h1, h2, h3, h4):hover .anchor {
+  opacity: 1;
+}
+.d17-prose a {
+  color: var(--electric);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.d17-prose a:hover {
+  color: var(--ink);
+}
+.d17-prose strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+.d17-prose ul,
+.d17-prose ol {
+  padding-left: 1.4em;
+}
+.d17-prose ul {
+  list-style: disc;
+}
+.d17-prose ol {
+  list-style: decimal;
+}
+.d17-prose li + li,
+.d17-prose li > ul,
+.d17-prose li > ol {
+  margin-top: 0.35em;
+}
+.d17-prose code {
+  font-family: var(--font-mono);
+  font-size: 0.86em;
+  padding: 0.1em 0.3em;
+  background: var(--faint);
+  color: var(--ink);
+}
+.d17-prose pre {
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 1em;
+  background: var(--panel);
+  border: 1px solid var(--hairline);
+  line-height: 1.5;
+}
+.d17-prose pre code {
+  padding: 0;
+  background: none;
+  font-size: 13px;
+}
+.d17-prose blockquote {
+  border-left: 2px solid var(--hairline);
+  padding-left: 1em;
+  color: var(--dim);
+}
+.d17-prose hr {
+  border: 0;
+  border-top: 1px solid var(--hairline);
+  margin: 2em 0;
+}
+.d17-prose table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.d17-prose th,
+.d17-prose td {
+  border: 1px solid var(--hairline);
+  padding: 0.45em 0.7em;
+  text-align: left;
+  vertical-align: top;
+}
+.d17-prose th {
+  color: var(--ink);
+  font-weight: 600;
+  background: var(--panel);
+}
+.d17-prose img {
+  max-width: 100%;
+}

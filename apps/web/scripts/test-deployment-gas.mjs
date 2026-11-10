@@ -1,0 +1,14 @@
+import assert from 'node:assert/strict';
+import { prepareLaunchGas, TRANSACTION_GAS_CAP } from '../lib/deployment-gas.mjs';
+const reject = async () => { throw new Error('unknown revert'); };
+let called = 0;
+const base = {simulateRead: async()=>{}, simulateWallet: async()=>{}, estimateRead: async()=>8000000n, estimateWallet: async()=>9000000n};
+assert.equal(await prepareLaunchGas(base), 9600000n);
+assert.equal(await prepareLaunchGas({...base, simulateRead:reject,estimateRead:reject}),10800000n);
+await assert.rejects(()=>prepareLaunchGas({...base,simulateRead:reject,simulateWallet:reject,estimateRead:async()=>{called++; return 1n;}}),/simulation failed/);
+assert.equal(called,0);
+assert.equal(await prepareLaunchGas({...base,estimateRead:async()=>TRANSACTION_GAS_CAP}),TRANSACTION_GAS_CAP);
+await assert.rejects(()=>prepareLaunchGas({...base,estimateRead:async()=>TRANSACTION_GAS_CAP+1n}),/exceeds/);
+await assert.rejects(()=>prepareLaunchGas({...base,estimateRead:async()=>0n}),/exceeds/);
+await assert.rejects(()=>prepareLaunchGas({...base,estimateRead:reject,estimateWallet:reject}),/unknown revert/);
+console.log('Deployment gas preflight: 8 assertions PASS; failed simulation never advances to estimation/signing.');

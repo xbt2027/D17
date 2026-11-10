@@ -1,0 +1,9 @@
+node_modules/
+.env
+.env.*
+!.env.sepolia.example
+!.env.mainnet.example
+data/*
+!data/.gitkeep
+*.log
+.DS_Store

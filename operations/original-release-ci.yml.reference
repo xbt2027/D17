@@ -1,0 +1,71 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+env:
+  NEXT_TELEMETRY_DISABLED: 1
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.22.1
+          cache: npm
+      - run: npm install --global npm@12.2.1 --ignore-scripts
+      - run: npm ci --ignore-scripts
+      - run: npm run compile -w @d17/contracts -- --force
+      - run: npm run typecheck
+      - run: npm run build
+      - run: npm run test:production-http
+      - run: npm run test:api
+      - run: npm run test:contracts
+      - run: npm run test:guard -w @d17/web
+      - run: npm run check:explorer -w @d17/contracts
+      - run: npm run test:launch-state
+      - run: npm run test:read-provider
+      - run: npm run test:wallet-target
+      - run: npm run test:deployment-gas
+      - run: npm run test:release-plan
+      - run: npm run test:release-integrity
+      - run: npm run verify:candidate-build
+      - run: npm run check:release
+      - run: git diff --exit-code
+      # Passing this job verifies local integrity, not authorization to deploy.
+  rendered-wallet:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.22.1
+          cache: npm
+      - run: npm install --global npm@12.2.1 --ignore-scripts
+      - run: npm ci --ignore-scripts
+      - run: npm ci --prefix contracts/browser-tools --ignore-scripts
+      - run: npx playwright install-deps chromium
+        working-directory: contracts/browser-tools
+      - run: npm run test:browser
+      - run: git diff --exit-code
+      # Only local EDR + an injected test wallet; this is not a public-chain release.
+  dependencies:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.22.1
+          cache: npm
+      - run: npm install --global npm@12.2.1 --ignore-scripts
+      - run: npm ci --ignore-scripts
+      - run: npm run check:dependency-tree
+      - if: success() || failure()
+        run: npm audit --omit=dev
+      - if: success() || failure()
+        run: npm audit

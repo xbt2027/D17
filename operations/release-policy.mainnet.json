@@ -1,0 +1,39 @@
+{
+  "schema": "d17-reviewed-fee-policy-v1",
+  "chainId": 1,
+  "sourceCommit": null,
+  "buildManifestSha256": null,
+  "protocolFeeBps": 200,
+  "feeSplitBps": [
+    5000,
+    1250,
+    1250,
+    2500
+  ],
+  "feeSplitRecipients": [
+    null,
+    null,
+    null,
+    null
+  ],
+  "factoryDeployer": null,
+  "launchDeployer": null,
+  "lockerDeployer": null,
+  "feeConfigOwner": null,
+  "nonces": {},
+  "dependencies": {
+    "weth": {
+      "address": null,
+      "runtimeKeccak256": null
+    },
+    "router": {
+      "address": null,
+      "runtimeKeccak256": null
+    },
+    "routerFactory": {
+      "address": null,
+      "runtimeKeccak256": null
+    }
+  },
+  "confirmations": 12
+}
